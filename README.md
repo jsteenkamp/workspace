@@ -2,6 +2,8 @@
 
 Prototyping with [React](http://facebook.github.io/react/), [Redux](http://redux.js.org/), and [GraphQL](http://graphql.org/) using [Apollo](http://dev.apollodata.com/).
 
+Current requirement is for desktop web browsers for data visualisation applications so design is intended for small screens or mobile devices.
+
 ## Tooling
 
 We use [Yarn](https://yarnpkg.com/), [babel](https://babeljs.io/), and [webpack](https://webpack.js.org/).
@@ -10,7 +12,9 @@ We use [Yarn](https://yarnpkg.com/), [babel](https://babeljs.io/), and [webpack]
 
 `src` - application source files that are complied by [babel](https://babeljs.io/) and build by [webpack](https://webpack.js.org/).
 
-`dist` - deployment output. The development and production servers use files located in `dist`. Production built application files are saved in `dist/build`. Express server mappings serve static content from `build` and `public` directories on root path. The server API and processing modules are in the `dist/server` directory
+`dist` - deployment output. The development and production servers use files located in `dist`. Production built application files are saved in `dist/build`. Express server mappings serve static content from `build` and `public` directories on root path. The server API and processing modules are in the `dist/server` directory.
+
+`dist/public/app` - external application configuration. These files are used for external configurations such as mapping soft data models to UI components. These files are not compiled by Webpack and should use ES5 JavaScript. The files are loaded using [RequireJS](http://requirejs.org/) to provide a module system for code structure and reuse. It is also possible to expose the UI application to these files. Most application will not need this type of configuration, however it is a good Proof-of-Concept.
 
 `_assets` - build assets that are not deployed. The i18n messages are parsed and saved in `_assets/locales/data.json` when running `yarn intl`. This file is required for building the application and is bundled in the build output. Typically this file will be pulled from a separate repo used to manage translations. We do not load locales asynchronously so the locales data does not have to be deployed.
 
@@ -20,7 +24,13 @@ Create FSAs using [redux-actions](https://github.com/acdlite/redux-actions).
 
 Ensure redux data is immutable using [immutability-helper](https://github.com/kolodny/immutability-helper).
 
+Uses [redux-saga](https://redux-saga.js.org/) for async (side-effects) in preference to thunks.
+
 ## GraphQL
+ 
+With GraphQL and Apollo it is likey that Redux is not required at all. Components can their associated data queries can be collocated and Apollo client can handle caching and batching efficiently.
+
+Apollo can also provide a GraphQL query solution for access local storage and state resulting in a common and consistent way of providing data to components.
  
 [Apollo React Client](http://dev.apollodata.com/react/) and [Apollo Server](http://dev.apollodata.com/tools/graphql-server/index.html) with [Express](https://expressjs.com/)
 
@@ -29,6 +39,10 @@ For development [GraphiQL](https://github.com/graphql/graphiql) is available at 
 ## Routing
 
 [react-router (v4)](https://reacttraining.com/react-router/)
+
+Routing has not been added to the Tab navigation in this version however this is easily done. Some routes can be seen in the test components although you need to use the browser back button to return the list of test components.
+
+Routing to a Sign In form is available and disabled in the demo.
 
 ## CSS
 
@@ -48,12 +62,14 @@ Developers can add `modules` in `/app/modules` which are imported and used by ap
 
 ## Browsers
 
-Test on OSX with Chrome, Chrome Canary, Firefox, Firefox Developer Edition (Canary), Safari, Safari Technology Preview (Canary), Webkit Nightly. 
+Current popular cross-platform evergreen web browsers which means Chrome and Firefox.
+
+Also tested on Safari and Edge.  
  
-Test on Windows 7 with Microsoft Internet Explorer 11.
+Tested on Windows 7 with Microsoft Internet Explorer 11 but do not intend to support legacy browsers.
 
-# Issues
+## Roadmap
 
-- Safari 10.1 does not render [flexbox with 100% height](https://bugs.webkit.org/show_bug.cgi?id=137730) correctly. This is known issue and fixed in Safari 10.2 TP and Webkit Nightly.
-- Safari 10.1 and 10.2 TP do not display Context Menu submenu overlays fully although containers are the correct size.
-- Upgrade from Webpack 2.5.1 to 2.6.0 breaks build in IE11 (Windows 7), seems to be an issue around promises.
+- Responsive design for all screens/devices.
+- Optimise bundle sizes and downloading.
+- Progressive Web App (PWA).

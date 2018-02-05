@@ -20,7 +20,7 @@ define([], function() {
         gridTemplate: 'entities',
         action: 'ADD_GRID_VIEW',
         icon: '/assets/icons/white/apple.png',
-        title: 'EAG (1000 items)',
+        title: 'Grid (1000 items)',
         url: '/api/0/grid/entities/1000',
       },
       {
@@ -36,7 +36,7 @@ define([], function() {
         gridTemplate: 'entities',
         action: 'ADD_GRID_VIEW',
         icon: '/assets/icons/white/apple.png',
-        title: 'EAG (10 items)',
+        title: 'Grid (10 items)',
         url: '/api/0/grid/entities/10',
       },
       {
@@ -52,7 +52,7 @@ define([], function() {
         gridTemplate: 'entities',
         action: 'ADD_GRID_VIEW',
         icon: '/assets/icons/white/apple.png',
-        title: 'EAG (1 item)',
+        title: 'Grid (1 item)',
         url: '/api/0/grid/entities/1',
       },
       {
@@ -68,7 +68,7 @@ define([], function() {
         gridTemplate: 'entities',
         action: 'ADD_GRID_VIEW',
         icon: '/assets/icons/white/apple.png',
-        title: 'EAG (50k items)',
+        title: 'Grid (50k items)',
         url: '/api/0/grid/entities/50000',
       },
       {
@@ -76,16 +76,8 @@ define([], function() {
         gridTemplate: 'table',
         action: 'ADD_TABLE_VIEW',
         icon: '/assets/icons/white/lock.png',
-        title: 'Table (50,000 items)',
+        title: 'Table (50k items)',
         url: '/api/0/grid/entities/50000',
-      },
-      {
-        id: 22,
-        gridTemplate: 'eag',
-        action: 'ADD_GRID_VIEW',
-        icon: '/assets/icons/white/apple.png',
-        title: 'EAG (ContextServer)',
-        url: '/api/0/grid/alertsummary',
       },
       {
         id: 23,
